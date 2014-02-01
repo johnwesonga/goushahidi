@@ -1,8 +1,7 @@
 /*
 Package goushahidi provides a client for accessing data from Ushahidi API.
 
-Access different parts of the World Bank Open Data API using the various
-services:
+Access different data using the API:
          client := goushahidi.NewClient(nil)
 
          // list all incidences
