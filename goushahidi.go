@@ -6,7 +6,7 @@ services:
          client := goushahidi.NewClient(nil)
 
          // list all incidences
-         incidences, err := client.Countries.GetCountries()
+         incidences, err := client.GetIncidences()
 
 
 The full Ushahidi API is documented at https://wiki.ushahidi.com/display/WIKI/Ushahidi+3.x+REST+API.
