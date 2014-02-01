@@ -12,3 +12,16 @@ services:
 The full Ushahidi API is documented at https://wiki.ushahidi.com/display/WIKI/Ushahidi+3.x+REST+API.
 */
 package goushahidi
+
+const (
+	libraryVersion = "0.1"
+	defaultBaseURL = "http://demo.ushahidi.com" // Demo Ushahidi Instance
+)
+
+type UshahidiClient struct {
+}
+
+func NewClient() *UshahidiClient {
+	return &UshahidiClient{}
+
+}
