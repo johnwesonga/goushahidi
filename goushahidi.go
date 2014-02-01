@@ -12,15 +12,27 @@ The full Ushahidi API is documented at https://wiki.ushahidi.com/display/WIKI/Us
 */
 package goushahidi
 
+import (
+	"net/http"
+	"net/url"
+)
+
 const (
 	libraryVersion = "0.1"
 	defaultBaseURL = "http://demo.ushahidi.com" // Demo Ushahidi Instance
 )
 
 type UshahidiClient struct {
+	client  *http.Client
+	BaseURL *url.URL
 }
 
 func NewClient() *UshahidiClient {
-	return &UshahidiClient{}
+	baseURL, _ := url.Parse(defaultBaseURL)
+	return &UshahidiClient{client: http.DefaultClient, BaseURL: baseURL}
+
+}
+
+func (u *UshahidiClient) NewRequest(method, urlStr string, body interface{}) {
 
 }
