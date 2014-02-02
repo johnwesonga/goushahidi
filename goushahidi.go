@@ -13,26 +13,51 @@ The full Ushahidi API is documented at https://wiki.ushahidi.com/display/WIKI/Us
 package goushahidi
 
 import (
+	"bytes"
+	"encoding/json"
+	"flag"
 	"net/http"
 	"net/url"
 )
 
 const (
 	libraryVersion = "0.1"
-	defaultBaseURL = "http://demo.ushahidi.com" // Demo Ushahidi Instance
 )
 
-type UshahidiClient struct {
-	client  *http.Client
-	BaseURL *url.URL
+type Client struct {
+	client         *http.Client
+	BaseURL        *url.URL
+	DefaultBaseURL string
 }
 
-func NewClient() *UshahidiClient {
-	baseURL, _ := url.Parse(defaultBaseURL)
-	return &UshahidiClient{client: http.DefaultClient, BaseURL: baseURL}
+func NewClient(DefaultBaseURL string) *Client {
+	flag.Parse()
+	baseURL, _ := url.Parse(DefaultBaseURL)
+	return &Client{client: http.DefaultClient, BaseURL: baseURL}
 
 }
 
-func (u *UshahidiClient) NewRequest(method, urlStr string, body interface{}) {
+func (c *Client) NewRequest(method, urlStr string, body interface{}) (*http.Request, error) {
+	rel, err := url.Parse(urlStr)
+	if err != nil {
+		return nil, err
+	}
+
+	u := c.BaseURL.ResolveReference(rel)
+	buf := new(bytes.Buffer)
+	if body != nil {
+		err := json.NewEncoder(buf).Encode(body)
+		if err != nil {
+			return nil, err
+		}
+
+	}
+
+	req, err := http.NewRequest(method, u.String(), buf)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
 
 }
