@@ -15,7 +15,6 @@ package goushahidi
 import (
 	"bytes"
 	"encoding/json"
-	"flag"
 	"net/http"
 	"net/url"
 )
@@ -31,7 +30,6 @@ type Client struct {
 }
 
 func NewClient(DefaultBaseURL string) *Client {
-	flag.Parse()
 	baseURL, _ := url.Parse(DefaultBaseURL)
 	return &Client{client: http.DefaultClient, BaseURL: baseURL}
 
