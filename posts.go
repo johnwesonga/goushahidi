@@ -14,7 +14,7 @@ type Post struct {
 
 type Results struct {
 	Id   int
-	Url  String
+	Url  string
 	Form struct {
 		Id  int
 		Url string
