@@ -1,7 +1,7 @@
 goushahidi
 ==========
 
-goushahidi is Go client library for accessing the Ushahidi API
+goushahidi is Go client library for accessing the [Ushahidi API][]
 
 **Documentation:** <http://godoc.org/github.com/johnwesonga/goushahidi/ushahidi>
 
