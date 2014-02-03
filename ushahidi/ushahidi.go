@@ -1,8 +1,8 @@
 /*
-Package goushahidi provides a client for accessing data from Ushahidi API.
+Package ushahidi provides a client for accessing data from Ushahidi API.
 
 Access different data using the API:
-         client := goushahidi.NewClient(nil)
+         client := ushahidi.NewClient(nil)
 
          // list all incidences
          incidences, err := client.GetIncidences()
