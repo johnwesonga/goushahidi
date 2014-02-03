@@ -3,7 +3,8 @@ goushahidi
 
 goushahidi is Go client library for accessing the [Ushahidi API][]
 
-**Documentation:** <http://godoc.org/github.com/johnwesonga/goushahidi/ushahidi>
+**Documentation:** [![GoDoc](https://godoc.org/github.com/johnwesonga/goushahidi/ushahidi?status.png)](https://godoc.org/github.com/johnwesonga/goushahidi/ushahidi)
+
 
 
 ## Usage ##
