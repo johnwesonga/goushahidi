@@ -23,7 +23,7 @@ type User struct {
 	Logins         int    `json:"logins,omitempty"`
 	LastLogin      string `json:"last_login,omitempty"`
 	FailedAttempts int    `json:"failed_attempts,omitempty"`
-	lastAttempt    string `json:"last_attempt,omitempty"`
+	LastAttempt    string `json:"last_attempt,omitempty"`
 	Created        string `json:"created,omitempty"`
 	Updated        string `json:"updated,omitempty"`
 }
@@ -31,7 +31,7 @@ type User struct {
 // Get a single user.
 //
 // Ushahidi API docs: https://wiki.ushahidi.com/display/WIKI/Ushahidi+3.x+API+Users+Resource#Ushahidi3.xAPIUsersResource-GETusers/:id
-func (u *UsersService) Get(id int) *User {
+func (u *UsersService) Get(id int) (*User, error) {
 	url := fmt.Sprintf("users/%i", id)
 
 }
@@ -40,6 +40,6 @@ func (u *UsersService) Get(id int) *User {
 //
 // Ushahidi API docs: https://wiki.ushahidi.com/display/WIKI/Ushahidi+3.x+API+Users+Resource#Ushahidi3.xAPIUsersResource-POSTusers
 func (u *UsersService) Create(email string, firstName string,
-	lastName string, userName string, password string) *User {
+	lastName string, userName string, password string) (*User, error) {
 
 }
