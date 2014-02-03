@@ -32,7 +32,13 @@ type User struct {
 //
 // Ushahidi API docs: https://wiki.ushahidi.com/display/WIKI/Ushahidi+3.x+API+Users+Resource#Ushahidi3.xAPIUsersResource-GETusers/:id
 func (u *UsersService) Get(id int) (*User, error) {
-	url := fmt.Sprintf("users/%i", id)
+	url := fmt.Sprintf("users/%v", id)
+	req, err := u.client.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	uResp := new(User)
 
 }
 
